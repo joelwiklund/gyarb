@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		
+		
+		<meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+
+	 body {background-color: white;}
+	 h1 {color: red;}		
+
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  
+	}
+
+	.nodecircle1 {
+		 fill: #fff;
+	  stroke: rgb(216, 19, 19);
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  
+		font: 12px sans-serif;
+	
+	}
+
+	.link {
+	  fill: none;
+	  stroke: steelblue;
+	  
+	}
+	
+
+
+
+    </style>
+
+  </head>
+
+<body>
+
+	
+	<!--   <h1 style="font-size: 40px">
+		Ett träd
+	</h1>	
+<p style= "color:orangered;">
+	
+	Ett fint träd
+</p>    -->
+
+//<a href="https://www.google.com/"> Det här är en länk</a>
+
+
+
+
+<!-- load the d3.js library -->	
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	
+<script>
+
+var simulation=null
+
+//d3.csv("./Data/SUM data Base 1.csv",function(d) {
+//	d.forEach(function(d) {
+//    d.NPV = +d.NPV;
+//		d.Launched = +d.Launched;
+//		d.ExecutionPath = +d.ExecutionPath;
+  //});
+	//console.log(d);
+	//simulation=d
+	
+
+
+
+
+//file( //WIKLUNDNAS/homes/admin/CloudStation/Gymnasiearbete/Bok1.xlsx 
+//)
+
+//const input =
+//document.querySelector('input[type="file"]')
+//input.addeven
+
+
+var a = "1"
+var aa = "11"
+
+//var prob11 = simulation[3].ExecutionPath
+
+
+var treeData = [
+  {
+		"name": "Start",
+		"type": 9,
+    "children": [
+      {
+				"name": a,
+				"type": 1,
+				"prob": 0.8042,
+        "children": [
+          {
+						"name": aa,
+						"prob": 0.643, 
+						"children": [
+						{
+						"name": "111",
+						"prob": 0.254,
+						"children": [
+						{
+						"name": "1111",
+						"totprob": 0.2275,
+						"prob": 0.2275,
+						"npv": 255,
+						"type": 1,
+						"children": [
+						]
+          },
+          {
+            "name": "1112",
+						"prob": 0,
+						"children": [
+							{
+								"name": "11121",
+								"prob": 0,
+							},{
+								"name": "11122",
+								"prob": 0,
+							},{
+								"name": "11120",
+								"type": 0,
+								"prob": 0,
+							}							
+						]
+					},
+					{
+						"name": "1110",
+						"type": 0,
+						"prob": 0.0265,
+						"totprob": 0.0265,
+						"npv": -62.2,
+          }
+						]
+          },
+          {						
+							"name": "112",
+							"prob": 0,
+							"children": [
+								{
+									"name": "1121",
+									"prob": 0,
+								},{
+								"name": "1122",
+								"prob": 0,
+							},{
+								"name": "1120",
+								"type": 0,
+								"prob": 0,
+							}						
+						]
+					},
+					{
+						"name": "110",
+						"type": 0,
+						"prob": 0.3890,
+						"npv": -60.0,
+						"totprob": 0.3890,            
+          }
+						]
+          },
+          {
+            "name": "12",
+						"prob": 0.0235,
+						"children": [
+						{
+            "name": "121",
+						"prob": 0.0084,
+						"children": [
+							{
+								"name": "1211",
+								"totprob": 0.0074,
+								"npv": 319,
+								"prob": 0.0074,
+							},{
+								"name": "1212",
+								"prob": 0,
+							},{
+								"name": "1210",
+								"prob": 0.001,
+								"totprob": 0.001,
+								"npv": -23.8,
+								"type": 0
+							}
+						]
+          },
+          {
+            "name": "122",
+								"prob": 0,
+						"children": [
+							{
+								"name": "1221",
+								"prob": 0,
+							},{
+								"name": "1222",
+								"prob": 0,
+							},{
+								"name": "1220",
+								"type": 0,
+								"prob": 0,
+							}
+						]
+					},					
+					{					
+					"name": "120",
+					"prob": 0.0151,
+					"totprob": 0.0151,
+					"npv": -22.3,
+					"type": 0,					
+				}					
+						]
+					},
+					{
+						"name": "10",
+						"prob": 0.1427,
+						"totprob": 0.1427,
+						"npv": -2.93,
+						"type": 0,
+          }
+        ]
+      },
+      {
+        "name": "2",
+				"prob": 0.1909,
+				"children": [
+          {
+						"name": "21",
+						"prob": 0,
+						"children": [
+						{
+            "name": "211",
+								"prob": 0,
+						"children": [
+							{
+								"name": "2111",
+								"prob": 0,
+							},{
+								"name": "2112",
+								"prob": 0,
+							},{
+								"name": "2110",
+								"prob": 0,
+								"type": 0
+							}
+						]
+          },
+          {
+            "name": "212",
+								"prob": 0,
+						"children": [
+							{
+								"name": "2121",
+								"prob": 0,
+							},{
+								"name": "2122",
+								"prob": 0,
+							},{
+								"name": "2120",
+								"type": 0,
+								"prob": 0,
+							}
+						]
+					},
+					{
+						"name": "210",
+								"prob": 0,
+						"type": 0,
+          }
+						]
+  
+          },
+          {
+						"name": "22",
+						"prob": 0.1909,
+						"children": [
+						{
+            "name": "221",
+						"prob": 0.089,
+						"children": [
+							{
+								"name": "2211",
+								"prob": 0.0798,
+								"npv": 385,
+								"totprob": 0.08,
+							},{
+								"name": "2212",
+								"prob": 0,
+							},{
+								"name": "2210",
+								"prob": 0.0092,
+								"type": 0,
+								"totprob": 0.0091,
+								"npv": -23.2,
+							}
+						]
+          },
+          {
+            "name": "222",
+								"prob": 0,
+						"children": [
+							{
+								"name": "2221",
+								"prob": 0,
+							},{
+								"name": "2222",
+								"prob": 0,
+							},{
+								"name": "2220",
+								"type": 0,
+								"prob": 0,
+							}
+						]
+					},
+					{
+						"name": "220",
+						"prob": 0.1018,
+						"type": 0,
+						"totprob": 0.1018,
+						"npv": -21.9,
+          }
+						]  
+					},
+					{
+						"name": "20",
+								"prob": 0,
+						"type": 0,  
+          }
+        ]
+			},
+			{
+				"name": "0",
+								"prob": 0,
+				"type": 0,
+			}
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 10, right: 120, bottom: 20, left: 120},
+	width = 1260 - margin.right - margin.left,
+	height = 750 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+		.attr("r", 1e-6)
+		.attr("stroke",function(d){
+			if (d.type === 0 ){ 
+				return "red"
+			} 
+		
+			else if (d.type === 1){
+				return "green"
+			} else if (d.type === 9){
+				return "steelblue"
+			} else { return "green" }
+		})
+		.attr("stroke-width",function(d){
+			if (d.prob === 0){ 
+				return 0
+			} else { return 2}
+		}
+		)
+
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+//Text vid noder
+
+  nodeEnter.append("text")
+
+		.attr("fill", function(d){
+			if (d.prob === 0){
+				return "white"
+			} else if (d.npv < 0){
+				return "red"
+			}
+			else { return "black"} 
+		})
+
+		.attr("x", function(d) { return d.children || d._children ? -12	 : -50; })
+	  .attr("dy", function(d) { return d.children || d._children ? -13 : 25; }, ".35em")
+		.attr("text-anchor", function(d) { return d.children || d._children ? "Start" : "start"; })
+	
+		.text(function(d) {
+			if (d.npv<100000000){
+				return (d.prob*100 +"%," + "    NPV:    " + d.npv+" M$")
+			} else if (d.prob>0.0001)
+			{
+				return d.prob*100+"%"
+			}
+			else { return d.name} 
+			})
+	
+		.style("fill-opacity", 1e-6);
+
+//Försök med en andra text, fungerar ej
+
+
+		nodeEnter.append("textnpv")
+			
+		.attr("fillnpv", function(d){
+		return "black"
+		})
+
+		.attr("xnpv", function(d) { return d.children || d._children ? 0	 : 0; })
+	  .attr("dynpv", function(d) { return d.children || d._children ? 0 : 0; }, ".35em")
+		.attr("text-anchornpv", function(d) { return d.children || d._children ? "Start" : "start"; })
+	
+		.text(function(d) {	return d.prob*100})
+		
+		.style("fill-opacitynpv", 1e-6);
+
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+		.attr("class", "link")
+		.attr("stroke-width",function(d){
+			if (d.target.prob === 0){
+				return 0
+			} if (d.target.prob < 0.05){
+				return 0.15
+			}else{return d.target.prob*13}
+		})
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+		});
+		
+	
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+//});
+
+</script>
+	
+  </body>
+</html>
